@@ -1,0 +1,36 @@
+{
+  "xsappname": "backend",
+  "tenant-mode": "dedicated",
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.cfapps.us10-001.hana.ondemand.com/**"
+    ]
+  },
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Display",
+      "description": "Display Users"
+    },
+    {
+      "name": "$XSAPPNAME.Update",
+      "description": "Update Users"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Viewer-service-tickets",
+      "description": "View Users",
+      "scope-references": [
+        "$XSAPPNAME.Display"
+      ]
+    },
+    {
+      "name": "Manager-service-tickets",
+      "description": "Maintain Users",
+      "scope-references": [
+        "$XSAPPNAME.Display",
+        "$XSAPPNAME.Update"
+      ]
+    }
+  ]
+}

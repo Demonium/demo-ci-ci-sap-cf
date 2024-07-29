@@ -1,0 +1,23 @@
+---
+applications:
+- name: backend
+  random-route: true
+  path: backend
+  memory: 128M
+  buildpacks:
+  - nodejs_buildpack
+- name: web
+  random-route: true
+  path: web
+  memory: 128M
+  env:
+    destinations: >
+      [
+        {
+          "name":"backend",
+          "url":"https://backend-sleepy-reedbuck-sp.cfapps.us10-001.hana.ondemand.com",
+          "forwardAuthToken": true
+        }
+      ]
+  services:
+  - nodeuaa
