@@ -1,0 +1,25 @@
+---
+general:
+  buildTool: "npm"
+service:
+  buildToolVersion: "N20"
+stages:
+  Build:
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: false
+  Acceptance:
+    cloudFoundryDeploy: false
+    npmExecuteEndToEndTests: false
+  Malware Scan:
+    malwareExecuteScan: false
+  Release:
+    tmsExport: false
+    tmsUpload: false
+    cloudFoundryDeploy: false
+  Additional Unit Tests:
+    npmExecuteScripts: false
+  Compliance:
+    sonarExecuteScan: false
+steps:
+  artifactPrepareVersion:
+    versioningType: "cloud_noTag"
